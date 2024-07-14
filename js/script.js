@@ -48,17 +48,27 @@ form.addEventListener('submit', function(event) {
 
 // Não permitir digitar virgula, digitar somente ponto
 document.addEventListener("DOMContentLoaded", function() {
-    const inputForm = document.getElementById("form");
-    const errorMessage = document.getElementById("error-message");
+    const weightInput = document.getElementById("weight");
+    const heightInput = document.getElementById("height");
+    const errorMessageWeight = document.getElementById("error-message-weight");
+    const errorMessageHeight = document.getElementById("error-message-height");
 
-    inputForm.addEventListener("keypress", function(event) {
+    weightInput.addEventListener("keypress", function(event) {
         if (event.key === ",") {
             event.preventDefault();
-            showError();
+            showError(errorMessageWeight);
+        }
+    });
+    
+    heightInput.addEventListener("keypress", function(event) {
+        if (event.key === ",") {
+            event.preventDefault();
+            showError(errorMessageHeight);
         }
     });
 
-    function showError() {
+    // Função mensagem de erro.
+    function showError(errorMessage) {
         errorMessage.style.display = "block"; // Exiber a msg de erro
         setTimeout(() => {  
             errorMessage.style.display = "none"; // Exiber a msg de erro, por tempo determinado de 2 segundos.
